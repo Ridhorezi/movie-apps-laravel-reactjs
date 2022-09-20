@@ -1,17 +1,21 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
+import SubscriptionDetail from './SubscriptionDetail'
 
 const Sidebar = () => {
   return (
     <aside className="fixed z-50 w-[300px] h-full">
       <div className="flex flex-col p-[30px] pr-0 border-r border-gray-[#F1F1F1] overflow-y-auto h-full">
-        <Link href={route('prototype.dashboard')}>
+        <Link href={route('user.dashboard.index')}>
           <img src="/images/moonton.svg" alt="" />
         </Link>
         <div className="links flex flex-col mt-[60px] h-full gap-[50px]">
           <div>
             <div className="text-gray-1 text-sm mb-4">Menu</div>
-            <Link href={route('prototype.dashboard')} className="side-link active">
+            <Link
+              href={route('user.dashboard.index')}
+              className="side-link active"
+            >
               <svg
                 width="24"
                 height="24"
@@ -82,7 +86,10 @@ const Sidebar = () => {
 
           <div>
             <div className="text-gray-1 side-link mb-4">Others</div>
-            <Link href={route('prototype.subscriptionPlan')} className="side-link">
+            <Link
+              href={route('user.dashboard.subscriptionPlan.index')}
+              className="side-link"
+            >
               <svg
                 width="24"
                 height="24"
@@ -148,8 +155,9 @@ const Sidebar = () => {
               Logout
             </a>
           </div>
-
-          <div className="mt-auto pr-[30px]">
+          <SubscriptionDetail />
+          
+          {/* <div className="mt-auto pr-[30px]">
             <div className="p-5 bg-black rounded-[25px]">
               <img src="/icons/ic_star-rounded.svg" alt="" />
               <div className="text-white text-lg font-semibold mt-4 mb-8">
@@ -160,7 +168,7 @@ const Sidebar = () => {
                 <div className="rounded-full h-full w-9/12 bg-alerange"></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </aside>

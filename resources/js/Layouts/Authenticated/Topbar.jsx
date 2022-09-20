@@ -1,14 +1,15 @@
 import React from 'react'
 import { useState, useRef } from 'react'
+import { Link } from '@inertiajs/inertia-react'
 
-const Topbar = () => {
+const Topbar = ({ name }) => {
   const [dropdownOpen, setdropdownOpen] = useState(true)
   const dropdownTarget = useRef()
   const triggerDropdown = () => {
     if (dropdownOpen) {
-        dropdownTarget.current.classList.remove('hidden')
+      dropdownTarget.current.classList.remove('hidden')
     } else {
-        dropdownTarget.current.classList.add('hidden')
+      dropdownTarget.current.classList.add('hidden')
     }
     setdropdownOpen(!dropdownOpen)
   }
@@ -20,9 +21,7 @@ const Topbar = () => {
         placeholder="Search Movie ..."
       />
       <div className="flex items-center gap-4">
-        <span className="text-black text-sm font-medium">
-          Welcome, Granola Sky
-        </span>
+        <span className="text-black text-sm font-medium">Welcome, {name}</span>
 
         <div className="collapsible-dropdown flex flex-col gap-2 relative">
           <div
@@ -45,19 +44,20 @@ const Topbar = () => {
             <a href="#!" className="transition-all hover:bg-sky-100 p-4">
               Settings
             </a>
-            <a
-              href="sign_in.html"
+            <Link
+              href={route('logout')}
+              method="post"
               className="transition-all hover:bg-sky-100 p-4"
             >
               Sign Out
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <style jsx="true">
         {`
           .top-search {
-            backgrond-image: url("/icons/ic_search.svg");
+            backgrond-image: url('/icons/ic_search.svg');
           }
         `}
       </style>
